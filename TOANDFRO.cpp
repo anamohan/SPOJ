@@ -13,22 +13,17 @@ int main() {
 		cin>>input;
 		int row = input.length() / col;
 		bool flag = true;
-		for (int j = 0; j < col; j++) {
-			for (int i = 0; i < row; i++) {
-				int left = j;
-				int right = col - j;
-				if (flag) {
-					pos = i * (col - 1) + left;
-					cout<<input[pos];
-				} else {
-					pos = i * (col - 1) + right;
-					cout<<input[pos];
-				}
+		for (int i = 0; i < col; i++) {
+			flag = true;
+			for (int j = 0; j < row; j++) {
+				int pos = (flag) ? ((col * j) + i) : ((col * (j + 1)) - i - 1);
+				printf("%c", input[pos]);
+				// printf("%d ", pos);
 				flag = !flag;
-			}	
+			}
+			// printf("\n");
 		}
-		cout<<endl;
-		
+		printf("\n");
 	}
 	return 0;
 }
